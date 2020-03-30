@@ -1,0 +1,44 @@
+// This is a script for the Dead and Buried game system
+
+// Attack Function (attacker token name/id, defender token name/id)
+// It handles a creature (attacker) attacking another creature (defender)
+//1. Retrieve current Attack skill attribute for the Attacker
+//      If above 24 then cap to 24
+//      If <= 0 then no attack to be made, go to 7
+//2. Retrieve current Defense skill attribute for the Defender
+//     If above 20 then cap to 20
+//3. Roll 1d20
+//     If 20 then Fumble
+//     Else if Attack skill - Roll is equal or more than Defense skill then Hit
+//     Else Miss
+//4. Resolve Fumble
+//5. Reduce Attack skill of Attacker by 24
+//6. Reduce Defense skill of Defender by 20
+//7. Announce outcome of attack in chat
+
+// New Round Function
+// Handles the replenishment of Attack and Defense skills for all tokens.
+//  Post "NEW ROUND" to chat
+//  For each token on map
+//      Increase Attack skill attribute to maximum
+//      Increase Defense skill attribute to maximum
+//      Increase Init attribute to maximum + 1d20
+//      Set value of tokens turn order to Init attribute + "." + 1d20 + 1d20 (sets value to 4dp)
+//      Call Deterioration Function
+//      Call Bleeding Function
+//      Post request to apply regen to chat
+
+// Deterioration Function (token name/id)
+//  Retrieves Deteriorating wound attribute
+//  If Deteriorating wounds > 0 then
+//      Retrieves System shock attribute for token
+//      If D100 > (System shock - (3% * Deteriorating wounds)) then
+//          If Deteriorating wounds >= 12 OR Unconscious attribute = 1 then token = Dead (apply skull and crossbones image)
+//          Else Unconscious attribute = 1
+//      Else nothing
+
+// Bleeding Function (token name/id)
+//  Retrieves Bleeding wounds attribute
+//  if Bleeding wounds > 0 then
+//      Reduce HP attribute current value by (Bleeding wounds / 2) **note (Bleeding wounds / 2) should round down
+//      Add (Bleeding wounds / 2) to current value of Deteriorating wounds attribute **note (Bleeding wounds / 2) should round down
