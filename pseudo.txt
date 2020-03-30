@@ -42,3 +42,36 @@
 //  if Bleeding wounds > 0 then
 //      Reduce HP attribute current value by (Bleeding wounds / 2) **note (Bleeding wounds / 2) should round down
 //      Add (Bleeding wounds / 2) to current value of Deteriorating wounds attribute **note (Bleeding wounds / 2) should round down
+
+Character sheet creation function
+
+Function needs to allow me to enter part of a token name, and then create the character sheet for all tokens that have that string in the name. I.e. Goblin 1, Goblin 2, Goblin 3 would only require me to enter “Goblin”.
+
+Attributes to be added to all character sheets.
+Character sheet to be attached to tokens created on the map.
+Ideally bar 1 on token to be linked to the HP attribute.
+All values with “?” as the value need to be set from a dialogue or as input parameters.
+
+Attribute list:
+Attack skill 1 (?) – need to be able to tell it how many attacks to create and what values for each
+Defense skill (?)
+HP (and tie this to bar 1 on the token) (?)
+Init (?)
+Body (calculated as [((Strength + Constitution) / 2) -3]) (rounds up)
+Dodge (calculated as [((Dexterity + Perception) / 2) -3]) (rounds up)
+Mind (calculated as [((Intelligence + Wisdom) / 2) -3]) (rounds up)
+Special (calculated as [((Strength + Dexterity + Constitution + Intelligence + Wisdom + Memory + Perception) / 7) -3]) (rounds up)
+Strength (?)
+Dexterity (?)
+Constitution (?)
+Intelligence (?)
+Wisdom (?)
+Charisma (?)
+Memory (?)
+Perception (?)
+Bleeding wounds (0/0)
+Bandaged wounds (0/0)
+Deteriorating wounds (0/0)
+Wound Penalty (0/0)
+System shock (?) – this could be a lookup based on Constitution the table is called Statistic Adjustments on page 86 of the rule book
+Unconscious (0/0)
